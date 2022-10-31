@@ -19,7 +19,7 @@ function start() {
   // pour pouvoir les manipuler plus facilement
   const number = 6;
   const size = monCanvas.width / number;
-  const color = Math.random() > 0.5 ? "black" : "darkblue";
+  const color = "darkblue";
   for (let i = 0; i < number; i++) {
     for (let j = 0; j < number; j++) {
       tiles.push(

@@ -7,7 +7,7 @@ class Tile {
     this.angle = Math.round(Math.random()) * (Math.PI / 2);
     this.ctx = ctx;
     this.bgColor = color;
-    this.lineColor = "lightblue"
+    this.lineColor = "white"
     // this.r = Math.round(Math.random() * 255);
     // this.g = Math.round(Math.random() * 255);
     // this.b = Math.round(Math.random() * 255);
