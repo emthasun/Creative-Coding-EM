@@ -7,7 +7,7 @@ class Tile {
     this.angle = Math.round(Math.random()) * (Math.PI / 2);
     this.ctx = ctx;
     this.bgColor = color;
-    this.lineColor = this.bgColor === "green" ? "black" : "green";
+    this.lineColor = "lightblue"
     // this.r = Math.round(Math.random() * 255);
     // this.g = Math.round(Math.random() * 255);
     // this.b = Math.round(Math.random() * 255);
@@ -24,7 +24,7 @@ class Tile {
     // if (this.rotation) {
     //   this.angle += 1;
     // }
-    this.ctx.strokeStyle = Math.random() > 0.05 ? "white" : "lightgreen";
+    this.ctx.strokeStyle = "white";
     this.ctx.fillStyle = this.bgColor;
     this.ctx.beginPath();
     this.ctx.rect(0 - this.size / 2,
@@ -38,7 +38,7 @@ class Tile {
     // this.ctx.strokeStyle = "white";
     this.ctx.lineWidth = 5;
 
-    //beginning of white flower shape
+    //beginning of flower shape
     this.ctx.beginPath();
 
     // this.ctx.beginPath();
