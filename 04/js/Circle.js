@@ -1,54 +1,33 @@
 class Circle {
-  constructor(x, y, radius, ctx, posX) {
-    this.position = { x: x, y: x};
+  constructor(x, y, ctx, radius, posX) {
+    this.position = { x: x, y: y };
     this.posX = posX;
-    //scale de la forme
-    this.originRadius = radius;
+    this.originPosX = posX;
+    this.targetPosX = posX;
     this.targetRadius = radius;
+    this.originRaius = radius;
     this.hue = Math.round(Math.random() * 360);
     this.originHue = this.hue;
     this.targetHue = this.hue;
     this.radius = radius;
     this.ctx = ctx;
-    /*
-      vitesse de d'incrémentation de t
-    */
+
     this.speed = 0.01;
-    /*
-      t est un compteur qui va de 0 à 1
-      qui definit la portion du chemin parcouru
-    */
+
     this.t = 0;
   }
 
   draw() {
-    //check si on est arrivé à destination
-    if (Math.abs(this.targetRadius - this.radius) > 0.01) this.scale();
-    else this.radius = this.targetRadius; //on force la position finale
+ 
+    if (Math.abs(this.targetPosX - this.posX) > 0.01) this.scale();
+    else this.posX = this.targetPosX; 
+
+    if (Math.abs(this.targetRadius - this.radius) > 0.1) this.scale();
+    else this.radius = this.targetRadius;
+
 
     this.ctx.fillStyle = `hsl(${this.hue},50%,50%)`;
 
-    this.ctx.save();
-    this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(-this.posX,0)
-    this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
-    this.ctx.fill();
-    this.ctx.closePath();
-    this.ctx.restore();
-
-    this.ctx.fillStyle = `hsl(${this.hue},50%,50%)`;
-
-    this.ctx.save();
-    this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(this.posX,0)
-    this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
-    this.ctx.fill();
-    this.ctx.closePath();
-    this.ctx.restore();
-
-    this.ctx.fillStyle = `hsl(${this.hue},50%,50%)`;
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
@@ -58,46 +37,20 @@ class Circle {
     this.ctx.closePath();
     this.ctx.restore();
 
-    //fill gaps
-
-    this.ctx.fillStyle = `hsl(${this.hue},50%,50%)`;
-
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(-this.posX+60,0)
+    this.ctx.translate(-this.posX, 0)
     this.ctx.beginPath();
     this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.restore();
 
-    this.ctx.fillStyle = `hsl(${this.hue},50%,50%)`;
+
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(this.posX-60,0)
-    this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
-    this.ctx.fill();
-    this.ctx.closePath();
-    this.ctx.restore();
-
-    this.ctx.fillStyle = `hsl(${this.hue},50%,50%)`;
-
-    this.ctx.save();
-    this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(-this.posX+110,0)
-    this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
-    this.ctx.fill();
-    this.ctx.closePath();
-    this.ctx.restore();
-
-    this.ctx.fillStyle = `hsl(${this.hue},50%,50%)`;
-
-    this.ctx.save();
-    this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(this.posX-110,0)
+    this.ctx.translate(this.posX, 0)
     this.ctx.beginPath();
     this.ctx.arc(0, 0, this.radius, 0, 2 * Math.PI);
     this.ctx.fill();
@@ -112,9 +65,9 @@ class Circle {
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(-this.posX,0)
+    this.ctx.translate(-this.posX, 0)
     this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius/2, 0, 2 * Math.PI);
+    this.ctx.arc(0, 0, this.radius / 2, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.stroke();
     this.ctx.closePath();
@@ -122,9 +75,9 @@ class Circle {
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(this.posX,0)
+    this.ctx.translate(this.posX, 0)
     this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius/2, 0, 2 * Math.PI);
+    this.ctx.arc(0, 0, this.radius / 2, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.stroke();
     this.ctx.closePath();
@@ -136,18 +89,18 @@ class Circle {
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(-this.posX + 30,0)
+    this.ctx.translate(-this.posX, 0)
     this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius/3, 0, 2 * Math.PI);
+    this.ctx.arc(0, 0, this.radius / 2.5, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.restore();
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(this.posX - 30,0)
+    this.ctx.translate(this.posX, 0)
     this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius/3, 0, 2 * Math.PI);
+    this.ctx.arc(0, 0, this.radius / 2.5, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.restore();
@@ -157,68 +110,68 @@ class Circle {
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(-this.posX + 60,-20)
+    this.ctx.translate(-this.posX, -50)
     this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius/6, 0, 2 * Math.PI);
+    this.ctx.arc(0, 0, this.radius / 6, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.restore();
 
     this.ctx.save();
     this.ctx.translate(this.position.x, this.position.y);
-    this.ctx.translate(this.posX -60,-20)
+    this.ctx.translate(this.posX, -50)
     this.ctx.beginPath();
-    this.ctx.arc(0, 0, this.radius/6, 0, 2 * Math.PI);
+    this.ctx.arc(0, 0, this.radius / 6, 0, 2 * Math.PI);
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.restore();
-  
+
   }
 
-  /**
-   *
-   *  remettre le compteur t à zero
-   *  réinitialiser la position du point de départ
-   *  assigner la nouvelle position de destination
-   */
+
   resetAndGo() {
     this.t = 0;
-    this.originRadius = this.radius;
-    if (this.radius == 200) {
-      this.targetRadius = 300 + 100;
-      this.posX = 370
+    this.originPosX = this.posX;
+    if (this.posX == 300) {
+      this.targetPosX = 0
+
     } else {
-      this.targetRadius = 200;
-      this.posX = 200;
+      this.targetPosX = 300;
     }
     this.originHue = this.hue;
     this.targetHue = this.hue + 50;
   }
 
-  /**
-   * function de calcul de l'animation
-   */
-  scale() {
-    //on incrémente t par la vitesse
-    this.t += this.speed;
-    //on calcule le facteur d'interpolation suivant le type de easing
-    const ease = Easing.bounceOut(this.t);
+  resetAndScale() {
+    this.t = 0;
+    this.originRadius = this.radius;
+    if (this.radius == 300) {
+      this.targetRadius = 200
 
-    //nouvelle position
-    // on part de la position d'origine
-    // on calcul la distance totale à parcourir (v2-v1)
-    // on multiplie cette distance par le facteur d'interpolation
+    } else {
+      this.targetRadius = 300;
+    }
+  }
+
+  scale() {
+
+    this.t += this.speed;
+    const ease = Easing.backInOut(this.t);
+    const growth = Easing.backInOut(this.t);
+
+
     // this.position.x = this.origin.x + (this.target.x - this.origin.x) * ease;
     // this.position.y = this.origin.y + (this.target.y - this.origin.y) * ease;
+    this.posX = Math.abs(
+      this.originPosX + (this.targetPosX - this.originPosX) * ease
+    );
     this.radius = Math.abs(
-      this.originRadius + (this.targetRadius - this.originRadius) * ease
+      this.originRadius + (this.targetRadius - this.originRadius) * growth
     );
     this.hue = this.originHue + (this.targetHue - this.originHue) * ease;
   }
 
-  /**
-   * calcul de la distance entre deux points
-   */
+
   distance(target, goal) {
     return Math.sqrt(
       Math.pow(target.x - goal.x, 2) + Math.pow(target.y - goal.y, 2)

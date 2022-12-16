@@ -6,7 +6,7 @@ class Easing {
    * all calculations on time to ease movement
    */
   static backInOut(t) {
-    const s = 1.70158 * 1.525;
+    const s = 1.70158 * 3;
     if ((t *= 2) < 1) return 0.5 * (t * t * ((s + 1) * t - s));
     return 0.5 * ((t -= 2) * t * ((s + 1) * t + s) + 2);
   }
@@ -22,12 +22,12 @@ class Easing {
   }
 
   static bounceInOut(t) {
-    if (t < 0.5) return easing.bounceIn(t * 2) * 0.5;
-    return easing.bounceOut(t * 2 - 1) * 0.5 + 0.5;
+    if (t < 0.5) return Easing.bounceIn(t * 2) * 0.5;
+    return Easing.bounceOut(t * 2 - 1) * 0.5 + 0.5;
   }
 
   static bounceIn(t) {
-    return 1 - easing.bounceOut(1 - t);
+    return 1 - Easing.bounceOut(1 - t);
   }
 
   static bounceOut(t) {

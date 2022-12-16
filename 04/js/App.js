@@ -20,17 +20,11 @@ class App {
     this.circle = new Circle(
       (window.innerWidth / 2) * this.pixelRatio,
       (window.innerHeight / 2) * this.pixelRatio,
-      200,
       this.ctx,
-      200
+      300,
+      300
     );
-    this.eye = new Eye(
-      (window.innerWidth / 2) * this.pixelRatio,
-      (window.innerHeight / 2) * this.pixelRatio,
-      0,
-      this.ctx,
-      200
-    )
+
     document.addEventListener("click", this.click.bind(this));
     this.draw();
   }
@@ -38,13 +32,13 @@ class App {
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.circle.draw();
-    this.eye.draw();
 
     requestAnimationFrame(this.draw.bind(this));
   }
 
   click(e) {
     this.circle.resetAndGo();
+    this.circle.resetAndScale();
   }
 }
 
